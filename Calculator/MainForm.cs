@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Calculator
@@ -115,9 +108,7 @@ namespace Calculator
 
         private void button_delete_Click(object sender, EventArgs e)
         {
-            string displaytext = textBox_display.Text;
-            displaytext = displaytext.Substring(0, displaytext.Length - 1);
-            textBox_display.Text = displaytext;
+            TextBoxBackSpace(textBox_display);
             textBox_display.SelectionStart = textBox_display.TextLength;
             textBox_display.ScrollToCaret();
 
@@ -137,6 +128,16 @@ namespace Calculator
             catch (Exception ex)
             {
                 textBox_display.Text = ex.Message;
+            }
+        }
+
+        private void TextBoxBackSpace(TextBox textBox)
+        {
+            if (textBox.TextLength > 0)
+            {
+                string textboxtext = textBox.Text;
+                textboxtext = textboxtext.Substring(0, textboxtext.Length - 1);
+                textBox.Text = textboxtext;
             }
         }
 
